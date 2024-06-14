@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateServiceDto {
+export class CreateServiceWithPuppyDto {
   @ApiProperty()
   priority: number;
 
@@ -11,5 +11,14 @@ export class CreateServiceDto {
   services: string;
 
   @ApiProperty()
-  puppyId: string;
+  puppyName: string;
+
+  @ApiProperty()
+  puppyBreed: string;
+
+  @ApiProperty()
+  puppyAge: number;
+
+  @ApiProperty()
+  puppyOwner: string;
 }
