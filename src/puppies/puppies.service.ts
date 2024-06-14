@@ -19,19 +19,36 @@ export class PuppiesService {
     return puppy;
   }
 
-  findAll() {
-    // return `This action returns all puppies`;
+  async findAll() {
+    const puppies = await this.prisma.puppy.findMany();
+    return puppies;
   }
 
-  findOne(id: number) {
-    // return `This action returns a #${id} puppy`;
+  async findOne(id: string) {
+    const puppy = await this.prisma.puppy.findUnique({
+      where: {
+        id,
+      },
+    });
+    return puppy;
   }
 
-  update(id: number, updatePuppyDto: UpdatePuppyDto) {
-    // return `This action updates a #${id} puppy`;
+  async update(id: string, updatePuppyDto: UpdatePuppyDto) {
+    const updatedPuppy = await this.prisma.puppy.update({
+      where: {
+        id,
+      },
+      data: updatePuppyDto,
+    });
+    return updatedPuppy;
   }
 
-  remove(id: number) {
-    // return `This action removes a #${id} puppy`;
+  async remove(id: string) {
+    const deletedPuppy = await this.prisma.puppy.delete({
+      where: {
+        id,
+      },
+    });
+    return deletedPuppy;
   }
 }
